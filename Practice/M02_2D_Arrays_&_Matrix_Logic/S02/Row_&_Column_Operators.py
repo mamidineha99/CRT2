@@ -1,21 +1,27 @@
+'''
+1351 - Count Negative Numbers in a Sorted Matrix 
+832 – Flipping an Image
+'''
+#1351 - Count Negative Numbers in a Sorted Matrix 
+
 from typing import List
 def countNegatives(grid: List[List[int]]) -> int:
-        '''
-        count = 0
-        for row in grid:
-            for ele in row:
-                if ele < 0:
-                    count += 1
-        return count
-        '''
-        count = 0
-        rows,cols = len(grid),len(grid[0])
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] < 0:
-                    count += (cols - c)
-                    break
-        return count
+    count = 0 
+    rows,cols = len(grid),len(grid[0])
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] < 0:
+                count += (cols - c)
+                break
+    return count
+    '''
+    count = 0
+    for row in grid:
+        for ele in row:
+            if ele < 0:
+                count += 1
+    return count
+    '''
 grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
 print(countNegatives(grid))
 

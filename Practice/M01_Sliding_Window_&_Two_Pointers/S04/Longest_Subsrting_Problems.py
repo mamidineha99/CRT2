@@ -10,30 +10,31 @@ Longest substring based:
 424. Longest Repeating Character Replacement
 '''
 from typing import List
-def totalFruit(f: List[int]) -> int:
+def totalFruit(fruits: List[int]) -> int:
     left,ans = 0,0
     freq = {}
-    for right in range(len(f)):
-        freq[f[right]] = freq.get(f[right],0) + 1
+    for right in range(len(fruits)):
+        freq[fruits[right]] = freq.get(fruits[right],0) + 1
         while len(freq) > 2:
-            freq[f[left]] -= 1
-            if freq[f[left]] == 0:
-                del freq[f[left]]
+            freq[fruits[left]] -= 1
+            if freq[fruits[left]] == 0:
+                del freq[fruits[left]]
             left += 1
         ans = max(ans,right-left+1)
     return ans
-fruits = [1,2,1]
+fruits = [1,2,3,2,2]
 print(totalFruit(fruits))
 
 def lengthOfLongestSubstring(s: str) -> int:
     left,ans = 0,0
-    seen = set()
+    char_set = set()
     for right in range(len(s)):
-        while s[right] in seen:
-            seen.remove(s[left])
+        while s[right] in char_set:
+            char_set.remove(s[left])
             left += 1
-        seen.add(s[right])
-        ans = max(ans,right-left+1)
+        char_set.add(s[right])
+        ans = max(ans,right - left + 1)
     return ans
-s = "abcabcbb"
-print(lengthOfLongestSubstring(s))
+
+print(lengthOfLongestSubstring("abcabcbb"))
+print(lengthOfLongestSubstring("abcabcbb"))
